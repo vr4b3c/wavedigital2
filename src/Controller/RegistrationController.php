@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\MailchimpService;
 use App\Form\RegistrationForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,13 +16,16 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/registrace', name: 'app_registration')]
-    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, MailchimpService $mailchimpService): Response
     {
 
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);
 
         $form->handleRequest($request);
+
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -33,6 +37,13 @@ class RegistrationController extends AbstractController
     
             $entityManager->persist($user);
             $entityManager->flush();
+
+           
+            $email = $user->getUserIdentifier();
+
+           
+            $mailchimpService->subscribeUser($email);
+
 
             $this->addFlash('success', 'Registrace proběhla úspěšně! Nyní se můžeš přihlásit.');   
             return $this->redirectToRoute('app_login'); 

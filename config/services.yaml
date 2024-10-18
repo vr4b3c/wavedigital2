@@ -28,3 +28,16 @@ services:
     App\Model\MailService:
         arguments:
             - '%env(MAIL_SENDER_EMAIL)%'
+
+
+    App\Service\:
+        resource: '../src/Service/*'
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Service\MailchimpService:
+        arguments:
+            $apiKey: '147fa6422e9a5c127dbf7ef03d8f354d-us9'
+            $listId: 'ba3806f5b9'        
+
