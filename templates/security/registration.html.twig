@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Registrace
+{% endblock %}
+
+{% block body %}
+
+
+            <div class="card bg-light mx-auto my-4" style="max-width: 350px;">
+                <article class="card-body mx-auto">
+                    <h4 class="card-title mt-3 text-center">Registrace</h4>
+
+                    {{ form_start(form) }} {# Začni vykreslování formuláře #}
+                    
+                    <div class="mb-3 input-group">
+                        <span class="input-group-text"> 
+                            <i class="fa fa-envelope"></i> 
+                        </span>
+                        {{ form_widget(form.username, { 'attr': { 'class': 'form-control', 'placeholder': 'Tvůj e-mail' } }) }}
+                    </div>
+
+                    <div class="mb-3 input-group">
+                        <span class="input-group-text"> 
+                            <i class="fa fa-lock"></i> 
+                        </span>
+                        {{ form_widget(form.password, { 'attr': { 'class': 'form-control', 'placeholder': 'Zadejte své nové heslo' } }) }}
+                    </div>
+
+                    <div class="d-grid">
+                        {{ form_widget(form.submit) }} {# Tlačítko pro odeslání formuláře #}
+                    </div>
+
+                    <p class="text-center mt-3">Máš už účet? <a href="/prihlaseni">Přihlaš se!</a></p>
+                    
+                    {{ form_rest(form) }} 
+                    {{ form_end(form) }} {# Ukonči vykreslování formuláře #}
+                </article>
+            </div>
+
+
+
+    
+    
+{% endblock %}

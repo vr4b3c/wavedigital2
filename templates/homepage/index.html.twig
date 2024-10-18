@@ -1,12 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-
+    Seznam registrovaných
 {% endblock %}
 
 {% block body %}
-    <h1>
-        {{ 'homepage.banner.title'|trans({}, 'homepage') }}
-    </h1>
-    <h2>TEST</h2>
+  
+
+
+        <h1>Seznam registrovaných</h1>
+
+        {% if app.user %}
+
+            <ul class="list-group mx-auto" style="max-width: 500px;">
+                {% for user in users %}
+                    <li class="list-group-item">{{ user.username }} - {{ user.createdAt|date('d.m Y, H:i') }}</li>
+                {% endfor %}
+            </ul>    
+
+        {% else %}
+
+            <div class="alert alert-danger text-center">
+                Seznam registrovaných je dostupný pouze pro přihlášené uživatele!                      
+                <a class="link-primary" href="/prihlaseni">Přihlaš se</a> nebo se <a class="link-primary" href="/registrace">zaregistruj</a>!
+            </div>
+
+        {% endif %}
+
+
+
+
 {% endblock %}
