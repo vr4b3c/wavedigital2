@@ -38,6 +38,6 @@ services:
 
     App\Service\MailchimpService:
         arguments:
-            $apiKey: '147fa6422e9a5c127dbf7ef03d8f354d-us9'
-            $listId: 'ba3806f5b9'        
+            $apiKey: '%env(MAILCHIMP_API_KEY)%'
+            $listId: '%env(MAILCHIMP_LIST_ID)%'    
 
