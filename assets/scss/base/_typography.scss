@@ -1,0 +1,69 @@
+h1 {
+	color: $color-white;
+	@include fontSize(96px);
+	line-height: 119%;
+	letter-spacing: -1px;
+	text-align: center;
+	@include resp('l') {
+		font-size: 72px;
+	}
+	@include resp('m') {
+		font-size: 42px;
+	}
+}
+
+h2 {
+	@include fontSize(48px);
+	letter-spacing: -1px;
+	@include theme() {
+		color: t(title-color);
+	}
+	@include resp('m') {
+		font-size: 28px;
+	}
+}
+
+h3 {
+	@include fontSize(24px);
+	letter-spacing: -1px;
+	color: $color-accent;
+}
+
+h4,
+.h4 {
+	@include fontSize(24px);
+	letter-spacing: -1px;
+	color: $color-body-text-dark;
+	&.small-headline {
+		@include fontSize(16px);
+		margin-bottom: 16px;
+		font-weight: $font-weight-body-text;
+		@include theme() {
+			color: t(small-headline);
+		}
+	}
+}
+
+p,
+li,
+code {
+	line-height: 1.6;
+	word-break: break-word;
+	@include theme() {
+		color: t(body-text-color);
+	}
+	a {
+		text-decoration: underline;
+		font-weight: $font-weight-title-text;
+	}
+}
+
+ul ul,
+ol ol {
+	padding-inline-start: 40px;
+}
+
+strong {
+	//color: $color-accent;
+	font-weight: 900;
+}

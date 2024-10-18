@@ -1,0 +1,153 @@
+/* -------------------------------------------------------------------------- */
+/*                                Falcon Button                               */
+/* -------------------------------------------------------------------------- */
+/* prettier-ignore */
+.w-50-mr-16 {
+    width: calc(50% - 8px);
+    margin-right: 16px;
+}
+
+.w-50-mr-0 {
+	width: calc(50% - 8px);
+}
+
+@media all and (max-width: 768px) {
+	.w-50-mr-16,
+	.w-50-mr-0 {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.btn-row {
+		row-gap: 16px;
+	}
+}
+
+#clients .due-incoming td {
+	color: var(--falcon-orange);
+}
+
+#clients .after-due td {
+	color: var(--falcon-red);
+}
+
+table .fa-times {
+	color: var(--falcon-red);
+}
+
+table .fa-check {
+	color: var(--falcon-green);
+}
+
+main .dataTables_wrapper:after {
+	content: none;
+}
+
+main .dataTables_wrapper .dataTables_paginate .paginate_button,
+main .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+main .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+main .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+	background: none;
+	border: none;
+	color: #5e6e82;
+	font-weight: bold;
+}
+
+main .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+main .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+	color: #2362b7 !important;
+	border: none;
+}
+
+.fa-eye,
+.fa-edit {
+	color: var(--falcon-primary);
+}
+
+.fa-trash-alt {
+	color: var(--falcon-danger);
+}
+
+.theme-hamburger-wrapper {
+	align-items: center;
+}
+
+.card-header .btns-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+table tr.past td,
+table tr.future td {
+	color: #8080809c;
+}
+
+table tr.current {
+	border-top: 2px solid #00000078;
+	border-bottom: 2px solid #00000078;
+}
+
+table tr.current td {
+	color: black;
+	font-weight: bold;
+}
+
+.title-message {
+	display: none;
+	color: #d06d35;
+}
+
+table .title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 800px;
+}
+
+.iconWrapper img {
+	width: 64px;
+	height: 64px;
+}
+
+.form-check .form-check-input {
+	margin-left: 0;
+	margin-right: 0.5rem;
+}
+
+.upArrow,
+.downArrow {
+	width: 16px;
+}
+
+.upArrow path,
+.downArrow path {
+	fill: white;
+}
+
+.downArrow {
+	transform: rotate(180deg);
+}
+
+.embedMapTooltipImage {
+	display: none;
+	position: absolute;
+	max-width: 480px;
+	z-index: 9999;
+}
+
+.fileIsTooBigMessage,
+.fileIsNotOfValidType {
+	display: none;
+	color: var(--falcon-danger);
+	font-weight: 500;
+	margin-top: 8px;
+	font-size: 14px;
+}
+
+.iconPreview {
+	width: 40px;
+	height: 40px;
+}
+
+table *[data-href]{
+	cursor: pointer;
+}

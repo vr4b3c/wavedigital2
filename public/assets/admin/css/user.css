@@ -1,0 +1,69 @@
+/* -------------------------------------------------------------------------- */
+/*                                Falcon Button                               */
+/* -------------------------------------------------------------------------- */
+/* prettier-ignore */
+.w-50-mr-16 {
+    width: calc(50% - 8px);
+    margin-right: 16px;
+}
+
+.w-50-mr-0 {
+    width: calc(50% - 8px);
+}
+
+@media all and (max-width: 768px) {
+    .w-50-mr-16, .w-50-mr-0 {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .btn-row {
+        row-gap: 16px;
+    }
+}
+
+
+#clients .due-incoming td {
+    color: var(--falcon-orange);
+}
+
+#clients .after-due td {
+    color: var(--falcon-red);
+}
+
+table .fa-times {
+    color: var(--falcon-red);
+}
+
+table .fa-check {
+    color: var(--falcon-green);
+}
+
+main .dataTables_wrapper:after{
+    content: none;
+}
+
+main .dataTables_wrapper .dataTables_paginate .paginate_button, main .dataTables_wrapper .dataTables_paginate .paginate_button:hover, main .dataTables_wrapper .dataTables_paginate .paginate_button.current, main .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    background: none;
+    border: none;
+    color: #5e6e82;
+    font-weight: bold;
+}
+
+main .dataTables_wrapper .dataTables_paginate .paginate_button.current, main .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    color: #2362b7!important;
+    border: none;
+}
+
+.fa-eye, .fa-edit{
+    color: var(--falcon-primary);
+}
+
+.fa-trash-alt{
+    color: var(--falcon-danger);
+}
+
+
+.theme-hamburger-wrapper{
+    align-items:center;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title> Přihlášení </title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset("assets/admin/css/falcon.css") }} " type="text/css">
+        <link rel="stylesheet" href="{{ asset("assets/admin/css/user.css") }} " type="text/css">
+        <script src="https://kit.fontawesome.com/636c16f7fd.js" crossorigin="anonymous"></script>
+    {% endblock %}
+
+</head>
+<body>
+<main class="main">
+    <div class="container-fluid">
+        <div class="row flex-center min-vh-100 py-6">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+{#                <a class="d-flex flex-center mb-4" href="/">#}
+{#                    <img src="/assets/img/svg/logo.svg" alt="" width="58"/>#}
+{#                </a>#}
+                <div class="card">
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="row flex-between-center mb-2">
+                            <div class="col-auto">
+                                <h5>Log in</h5>
+                            </div>
+                        </div>
+                        <form name="signInForm" method="post">
+                            <div class="mb-3">
+                                <input name="_username" class="form-control" type="text" placeholder="Username" value="{{ last_username }}"/>
+                            </div>
+                            <div class="mb-3">
+                                <input name="_password" class="form-control" type="password" placeholder="Password"/>
+                            </div>
+                            <div class="row flex-between-center">
+                                <div class="col-auto">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" type="checkbox" id="basic-checkbox"
+                                               checked="checked"/>
+                                        <label class="form-check-label mb-0" for="basic-checkbox">Remember me</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <button name="send" class="btn btn-primary d-block w-100 mt-3" type="submit">Přihlásit se
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>

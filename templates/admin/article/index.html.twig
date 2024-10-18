@@ -1,0 +1,106 @@
+{% extends 'admin/layout.html.twig' %} {% block title %}Články {% endblock %} {%
+block content %}
+<div class="main-inner">
+	<div class="card mb-3">
+		<div
+			class="card-header border-bottom d-flex justify-content-between flex-wrap"
+		>
+			{% set language = 'CZ' %}
+			{% set langPath = 'CZ' %}
+			{% if app.request.attributes.get('_locale') == 'en' %} {% set langPath
+			 = path(app.request.attributes.get('_route'), {_locale: 'cs'}) %} {% set
+			language = 'EN' %} {% elseif app.request.attributes.get('_locale') ==
+			'cs' %} {% set langPath = path(app.request.attributes.get('_route'),
+			{_locale: 'en'}) %} {% set language = 'CZ' %} {% endif %}
+			<h3>
+				Články - {{ language }}
+			</h3>
+			<div>
+				<a href="{{ langPath }}" class="btn btn-primary lang">
+					<i class="fas fa-globe"></i>
+					{{ 'header.language'|trans({}, 'header') }}</a
+				>
+				<a href="{{ path('admin_new') }}">
+					<button class="float-right btn btn-success">Přidat další</button>
+				</a>
+			</div>
+		</div>
+		<div class="card-body">
+			<span>Na veřejné časti webu se řadí dle sloupce Datum</span>
+			<div class="table-responsive scrollbar">
+				<table
+					class="table table-hover table-striped overflow-hidden"
+					id="articles"
+				>
+					<thead>
+						<tr>
+							<th scope="col">Nadpis</th>
+							<th scope="col">Datum</th>
+							<th scope="col">Publikace</th>
+							<th class="text-end" scope="col">Akce</th>
+						</tr>
+					</thead>
+					<tbody>
+{#						{% for article in items %}#}
+{#						<tr class="align-middle" data-href="{{path('admin_article_edit', {url: article.url})}}">#}
+{#							<td class="text-nowrap title">{{ article.title }}</td>#}
+{#							<td class="text-nowrap" data-sort="{{ article.datetime|date('c') }}">#}
+{#								{{ article.datetime|date('d. m. Y H:i') }}#}
+{#							</td>#}
+{#							<td class="text-nowrap" data-sort="{{ article.publishAt|date('c') }}">#}
+{#								{% if article.concept %}koncept{% else %}{{ article.publishAt|date('d. m. Y H:i') }}{% endif %}#}
+{#							</td>#}
+{#							<td class="text-end actions">#}
+{#								<div>#}
+{#									<a#}
+{#										class="btn p-0"#}
+{#										data-bs-toggle="tooltip"#}
+{#										data-bs-placement="top"#}
+{#										title="Edit"#}
+{#										href="{{#}
+{#											path('admin_article_edit', {#}
+{#												url: article.url#}
+{#											})#}
+{#										 }}"#}
+{#									>#}
+{#										<span class="text-500 fas fa-edit"></span>#}
+{#									</a>#}
+{#									<a#}
+{#										class="btn p-0 ms-2 delete-action"#}
+{#										data-bs-toggle="tooltip"#}
+{#										data-bs-placement="top"#}
+{#										title="Delete"#}
+{#										href="{{#}
+{#											path('admin_article_delete', {#}
+{#												url: article.url#}
+{#											})#}
+{#										 }}"#}
+{#									>#}
+{#										<span class="text-500 fas fa-trash-alt"></span>#}
+{#									</a>#}
+{#								</div>#}
+{#							</td>#}
+{#						</tr>#}
+{#						{% endfor %}#}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="col">Nadpis</th>
+							<th scope="col">Datum</th>
+							<th scope="col">Publikace</th>
+							<th class="text-end" scope="col">Akce</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} {% block javascripts %}
+{{ parent() }}
+<script>
+	$(document).ready(function () {
+		dataTableInit('articles', 1, 'desc');
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+.fs- {
+  &12 {
+    font-size: 12px;
+  }
+
+  &16 {
+    font-size: 16px;
+  }
+
+  &24{
+    font-size: 24px;
+  }
+
+  &32{
+    font-size: 32px;
+  }
+
+  &40{
+    font-size: 40px;
+  }
+
+  &48 {
+    font-size: 48px;
+    line-height: 1.15;
+    @include resp("m") {
+      font-size: 32px;
+    }
+  }
+  &80{
+    font-size: 80px;
+    @include resp("l"){
+      font-size: 48px;
+    }
+  }
+
+  &120 {
+    font-size: 120px;
+    line-height: 1.15;
+    @include resp("l") {
+      font-size: 88px;
+    }
+    @include resp("m") {
+      font-size: 72px;
+    }
+    @include resp("s") {
+      font-size: 56px;
+    }
+  }
+}

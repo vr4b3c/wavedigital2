@@ -1,0 +1,194 @@
+{% extends 'admin/layout.html.twig' %} {% block title %}Článek{% endblock %} {%
+block content %}
+<div id="fb-root"></div>
+<script
+	async
+	defer
+	crossorigin="anonymous"
+	src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0"
+	nonce="jslxUnsj"
+></script>
+<div class="main-inner">
+	<div class="card p-3">
+		{% set language = 'CZ' %}
+		{% set langPath = 'CZ' %}
+		{% if app.request.attributes.get('_locale') == 'en' %} {% set pathParams =
+		app.request.attributes.get('_route_params')|merge({'_locale': 'cs'}) %} {%
+		set langPath = path(app.request.attributes.get('_route'), pathParams) %}
+		{% set language = 'EN' %} {% elseif app.request.attributes.get('_locale')
+		== 'cs' %} {% set pathParams =
+		app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) %} {%
+		set langPath = path(app.request.attributes.get('_route'), pathParams) %}
+		{% set language = 'CZ' %} {% endif %}
+		<div
+			class="card-header d-flex justify-content-between w-100 mb-4 align-items-center border-bottom flex-wrap"
+		>
+			<div class="col w-100 w-sm-25">
+				<h3>
+					{% if edit is defined %} Upravit článek - {{ language }}
+					{% else %} Vytvořit nový článek {% endif %}
+				</h3>
+				<span>* - povinný údaj</span>
+			</div>
+			<div class="btns-wrapper flex-wrap">
+				{% if entity is defined %}
+{#				<a#}
+{#					class="btn btn-primary m-2 mx-sm-2 m-sm-0"#}
+{#					href="https://linkedin.com/shareArticle?url={{ app.request.getSchemeAndHttpHost() ~ path('article_detail', {'url': entity.url}) }}"#}
+{#					target="_blank"#}
+{#					>LinkedIn</a#}
+{#				>#}
+{#				<a#}
+{#					class="btn btn-primary m-2 mx-sm-2 m-sm-0"#}
+{#					href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.getSchemeAndHttpHost() ~ path('article_detail', {'url': entity.url}) }}"#}
+{#					target="_blank"#}
+{#				>#}
+{#					Facebook#}
+{#				</a>#}
+				{% endif %}
+				<a
+					href=""
+					class="btn btn-primary lang m-2 mx-sm-2 m-sm-0"
+					><i class="fas fa-globe"></i>
+					{{ 'header.language'|trans({}, 'header') }}</a
+				>
+				{% if edit is defined %}
+				<a
+					href=""
+					class="btn btn-primary m-2 mx-sm-2 m-sm-0"
+					>Seznam verzí</a
+				>
+				{% endif %}
+			</div>
+		</div>
+{#		{{ form_start(form) }}#}
+{#		<div class="d-flex w-100 mb-6 flex-wrap">#}
+{#			<div class="col-12 px-2 mb-4">#}
+{#				{% if entity is defined %}#}
+{#				{{#}
+{#					form_label(#}
+{#						form.publishAt,#}
+{#						'Datum publikace - při změně se vytvoří nová verze této pozice *'#}
+{#					)#}
+{#				}}#}
+{#				{% else %}#}
+{#				{{ form_label(form.publishAt, 'Datum publikace *') }}#}
+{#				{% endif %}#}
+{#				{{ form_widget(form.publishAt, {'attr': {'class': 'form-control'}})#}
+{#				}}#}
+{#			</div>#}
+{#			<div class="col-12 col-sm-6 col-md-6 px-2 mb-2">#}
+{#				{{ form_label(form.title, 'Titulek *') }}#}
+{#				{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 col-sm-6 col-md-6 px-2 mb-2">#}
+{#				{% if entity is defined %}#}
+{#				{{#}
+{#					form_label(#}
+{#						form.url,#}
+{#						'URL (zadávejte ve tvaru "muj-novy-clanek") - při změně se změní u všech možností tohoto článku *'#}
+{#					)#}
+{#				}}#}
+{#				{% else %}#}
+{#				{{#}
+{#					form_label(#}
+{#						form.url,#}
+{#						'URL (zadávejte ve tvaru "muj-novy-clanek") *'#}
+{#					)#}
+{#				}}#}
+{#				{% endif %}#}
+{#				{{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 col-sm-6 col-md-6 px-2 mb-2">#}
+{#				{{ form_label(form.seoTitle, 'SEO Titulek *') }}#}
+{#				{{ form_widget(form.seoTitle, {'attr': {'class': 'form-control'}})#}
+{#				}}#}
+{#			</div>#}
+{#			<div class="col-12 col-sm-6 col-md-6 px-2 mb-4">#}
+{#				{{ form_label(form.seoDesc, 'SEO Popis *') }}#}
+{#				{{ form_widget(form.seoDesc, {'attr': {'class': 'form-control'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 col-sm-6 col-md-6 px-2 mb-4">#}
+{#				{{#}
+{#					form_label(#}
+{#						form.previewText,#}
+{#						'Preview text (zobrazí se pouze v náhledu článku) *'#}
+{#					)#}
+{#				}}#}
+{#				{{ form_widget(form.previewText, {'attr': {'class': 'form-control'#}
+{#				}}) }}#}
+{#			</div>#}
+{#			<div class="d-flex w-100 mb-2 flex-wrap">#}
+{#				<div class="col-12 col-sm-6 col-md-6 px-2 mb-2">#}
+{#					{{ form_label(form.homepageOrder, 'Pořadí na homepage') }}#}
+{#					{{ form_widget(form.homepageOrder, {'attr': {'class': 'form-control'}}) }}#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="col-12 px-2 mb-2">#}
+{#				{% if entity is defined %}#}
+{#				<div class="w-100 mb-2">#}
+{#					<img#}
+{#						src="{{ asset(entity.coverImage) }}"#}
+{#						alt=""#}
+{#						class="w-25"#}
+{#						data-identifier="coverImage"#}
+{#					/>#}
+{#				</div>#}
+{#				{% endif %}#}
+{#				{{#}
+{#					form_label(form.coverImage, 'Obrázek * (přijímá png, jpg, jpeg)')#}
+{#				}}#}
+{#				{{ form_widget(form.coverImage, {'attr': {'class': 'form-control'}})#}
+{#				}}#}
+{#				<span class="fileIsTooBigMessage"#}
+{#					>Obrázek je příliš velký, maximální velikost = 6MB</span#}
+{#				><span class="fileIsNotOfValidType"#}
+{#					>Obrázek je ve špatném formátu, prosím nahrajte fotku v .png,#}
+{#					.jpg nebo .jpeg</span#}
+{#				>#}
+{#			</div>#}
+{#			<div class="col-12 px-2 mb-2">#}
+{#				{{ form_label(form.datetime, 'Datum *') }}#}
+{#				{{ form_widget(form.datetime, {'attr': {'class': 'form-control'}})#}
+{#				}}#}
+{#			</div>#}
+{#			<div class="col-12 px-2 mb-2">#}
+{#				{{ form_label(form.minutes, 'Počet minut čtení *') }}#}
+{#				{{ form_widget(form.minutes, {'attr': {'class': 'form-control'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 px-2 mb-2">#}
+{#				{{ form_label(form.text, 'Text') }}#}
+{#				{{ form_widget(form.text, {'attr': {'class': 'form-control'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 px-2 form-check">#}
+{#				{{ form_label(form.concept, 'Koncept', {'attr': {'class': 'form-check-label'}}) }}#}
+{#				{{ form_widget(form.concept, {'attr': {'class': 'form-check-input'}}) }}#}
+{#			</div>#}
+{#			<div class="col-12 px-2 mb-4">#}
+{#                    <span>Vytvoření článku jako koncept způsobí, že článek nebude veřejně viditelný.</span>#}
+{#                </div>#}
+{#		</div>#}
+{#		<div class="d-flex justify-content-between">#}
+{#			<button type="button" class="btn btn-warning" id="preview-btn">#}
+{#				Zobrazit náhled#}
+{#			</button>#}
+{#			<button type="submit" class="btn btn-success" name="save">#}
+{#				Uložit#}
+{#			</button>#}
+{#		</div>#}
+{#		{{ form_end(form) }}#}
+	</div>
+</div>
+{% endblock %} {% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('assets/admin/js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/tinymce-init.js') }}"></script>
+<script>
+	{#initPreview('{{ path('admin_article_preview') }}');#}
+
+	var items = [
+{#	    {{ shortcodes|raw }}#}
+	];
+	initTinymce('article_text', items);
+</script>
+{% endblock %}

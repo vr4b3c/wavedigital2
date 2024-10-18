@@ -1,0 +1,24 @@
+.video.video-js {
+  cursor: pointer;
+}
+
+.video.video-js .vjs-big-play-button {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background-color: transparent;
+  font-size: 6em;
+}
+
+.video.video-js:hover .vjs-big-play-button {
+  background-color: transparent;
+}
+
+.video.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+  transition: 0.2s ease;
+}
+
+.video.video-js:hover .vjs-big-play-button .vjs-icon-placeholder:before {
+  color: $color-accent;
+}

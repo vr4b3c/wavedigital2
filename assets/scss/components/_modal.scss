@@ -1,0 +1,276 @@
+.theme--light #modal-close path {
+	fill: $color-secondary-background-dark-blue;
+}
+
+.modal-open {
+	overflow: hidden;
+
+	.modal-wrapper {
+		display: flex;
+		background-color: rgba(9, 38, 70, 0.9);
+	}
+}
+
+.wac-modal-open {
+	overflow: hidden;
+	.wac-modal-wrapper {
+		display: flex;
+		background-color: rgba(9, 38, 70, 0.9);
+	}
+}
+
+.modal-wrapper,
+.wac-modal-wrapper {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+	z-index: 4;
+	opacity: 0;
+	//padding: 40px 0;
+	form {
+		width: 100%;
+		height: 100%;
+	}
+
+	.modal {
+		max-width: 480px;
+		width: 100%;
+		padding: 40px;
+		position: relative;
+		margin: auto;
+		display: none;
+		overflow-y: auto;
+		@include theme() {
+			background-color: t(body-bg);
+		}
+
+		&.modal-appointment {
+			button.btn {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+
+		&[data-form-step="1"] {
+			display: flex;
+		}
+
+		&[data-form-step="3"] {
+			.btn {
+				width: 100%;
+				justify-content: center;
+			}
+			a {
+				margin-bottom: 16px;
+			}
+		}
+
+		&.modal-thank-you {
+			padding: 40px 80px;
+			text-align: center;
+			&.modal-thank-you-wac h3 {
+				margin-bottom: 0;
+			}
+			h3 {
+				margin-bottom: 24px;
+			}
+			.thank-you-subtext {
+				@include fontSize(16px);
+				text-align: center;
+				@include theme() {
+					color: t(title-color);
+				}
+			}
+		}
+
+		svg {
+			top: 16px;
+			right: 16px;
+			width: 16px;
+			height: 16px;
+			position: absolute;
+			cursor: pointer;
+		}
+
+		h3 {
+			@include fontSize(24px);
+			margin-bottom: 16px;
+			text-align: center;
+			@include theme() {
+				color: t(title-color);
+			}
+		}
+
+		p {
+			margin-bottom: 40px;
+			text-align: center;
+			@include theme() {
+				color: t(body-text-color);
+			}
+		}
+		label {
+			@include theme() {
+				color: t(modal-label-color);
+			}
+		}
+
+		.fileInputLabel {
+			cursor: pointer;
+			margin-bottom: 16px;
+			.unsupportedFormat,
+			.fileTooBig {
+				margin-top: 4px;
+				display: none;
+				color: red;
+			}
+		}
+
+		.fileInputWrapper {
+			-webkit-appearance: none;
+			background-color: inherit;
+			margin-top: 8px;
+			padding: 13px 16px;
+			width: 100%;
+			transition: 0.2s ease;
+			@include fontSize(16px);
+			position: relative;
+			min-height: 47.19px;
+			@include theme() {
+				border: 1px solid t(border-color);
+				color: t(title-color);
+			}
+			span {
+				@include theme() {
+					color: t(modal-input-placeholder-color);
+				}
+				word-break: break-word;
+			}
+			input {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				cursor: pointer;
+				pointer-events: none;
+			}
+		}
+
+		input,
+		textarea,
+		select {
+			-webkit-appearance: none;
+			background-color: inherit;
+			margin-top: 8px;
+			padding: 13px 16px;
+			width: 100%;
+			margin-bottom: 16px;
+			transition: 0.2s ease;
+			@include fontSize(16px);
+
+			&.red {
+				@include theme() {
+					color: #f42318;
+					border: 1px solid #f42318;
+				}
+			}
+
+			&:focus {
+				@include theme() {
+					color: #0075c9;
+					border: 1px solid #0075c9;
+				}
+			}
+			&.shake {
+				animation: shake 0.4s;
+			}
+
+			@include theme() {
+				border: 1px solid t(border-color);
+				color: t(title-color);
+			}
+
+			&:focus {
+				outline: none;
+			}
+
+			&::placeholder {
+				@include theme() {
+					color: t(modal-input-placeholder-color);
+				}
+			}
+		}
+
+		textarea {
+			resize: none;
+			min-height: 120px;
+		}
+
+		p {
+			margin-bottom: 24px;
+			@include fontSize(14px);
+			line-height: 22px;
+		}
+
+		.btn-wrapper {
+			justify-content: flex-end;
+			.btn {
+				justify-content: space-between;
+				height: 100%;
+				&:after {
+					transform: rotate(0);
+				}
+				&:hover {
+					&:after {
+						background-image: url(../../svg/arrow-right-white.svg);
+					}
+				}
+			}
+		}
+	}
+}
+
+*[modal-opener] {
+	cursor: pointer;
+}
+
+@keyframes shake {
+	0% {
+		transform: translate(0, 0);
+	}
+	10% {
+		transform: translate(-2px, 0);
+	}
+	20% {
+		transform: translate(0%, 0);
+	}
+	30% {
+		transform: translate(2px, 0);
+	}
+	40% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(-2px, 0);
+	}
+	60% {
+		transform: translate(0%, 0);
+	}
+	70% {
+		transform: translate(2px, 0);
+	}
+	80% {
+		transform: translate(0, 0);
+	}
+	90% {
+		transform: translate(-2px, 0);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}

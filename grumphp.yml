@@ -1,0 +1,21 @@
+grumphp:
+    ascii:
+        failed:
+        succeeded:
+    tasks:
+        git_commit_message:
+            enforce_capitalized_subject: false
+            type_scope_conventions:
+                types: []
+        phpcsfixer2:
+            allow_risky: ~
+            cache_file: ~
+            config: .php-cs-fixer.dist.php
+            rules: [ ]
+            using_cache: ~
+            config_contains_finder: true
+            verbose: true
+            diff: false
+            triggered_by: [ 'php' ]
+        psalm:
+            config: psalm.xml

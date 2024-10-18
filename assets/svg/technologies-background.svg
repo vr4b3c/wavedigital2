@@ -1,0 +1,18 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M80 0H0V80H80V0Z" fill="#0075C9"/>
+<path d="M25.3984 40H54.5984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M40 25.3984V54.5984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.3984 25.3984L54.5984 54.5984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M54.5984 25.3984L25.3984 54.5984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M43.0996 25.3984L54.5996 36.8984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.3984 36.8984L36.8984 25.3984" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.5 56.1016L54.4 41.6016" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M43.0984 19.1992H36.8984V25.3992H43.0984V19.1992Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.3992 19.1992H19.1992V25.3992H25.3992V19.1992Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.3992 54.6016H19.1992V60.8016H25.3992V54.6016Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M43.0984 54.6016H36.8984V60.8016H43.0984V54.6016Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M60.7996 54.6016H54.5996V60.8016H60.7996V54.6016Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M60.7996 36.8984H54.5996V43.0984H60.7996V36.8984Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M25.3992 36.8984H19.1992V43.0984H25.3992V36.8984Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M60.7996 19.1992H54.5996V25.3992H60.7996V19.1992Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+</svg>

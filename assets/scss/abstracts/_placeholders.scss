@@ -1,0 +1,25 @@
+//usage
+//@extend %PLACEHOLDER
+
+%bg-image {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+%pseudo-bg{
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+%overlay{
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: inherit;
+  z-index: 1;
+}

@@ -1,0 +1,96 @@
+//define light and dark colors
+$themes: (
+	theme--light: (
+		body-bg: $color-white,
+		secondary-body-bg: $color-background-light-blue,
+		secondary-body-bg-dark: $color-secondary-background-dark-blue,
+		title-color: $color-title-text-blue,
+		body-text-color: $color-body-text-light,
+		secondary-body-text-color: $color-title-text-light-blue,
+		border-color: $color-border-light,
+		secondary-border-color: $color-secondary-border-light,
+		logo: url('../../svg/logo.svg'),
+		hamburger: url('../../svg/hamburger-dark.svg'),
+		hamburger-close: url('../../svg/hamburger-close.svg'),
+		progress-bg: $color-progress-bg-light,
+		small-headline: $color-accent,
+		header-btn-color: $color-accent,
+		modal-label-color: $color-body-text-light,
+		modal-input-placeholder-color: $color-placeholder-input-light,
+		hero-overlay-color: #092646,
+		position-detail-info-text-color: $color-body-text-light,
+		position-detail-info-bg-color: $color-secondary-background-light-blue,
+		theme-switcher-bg: $color-white,
+		theme-switcher-icon: url('../../svg/icon-sun-accent.svg'),
+		theme-switcher-icon-homepage: url('../../svg/icon-sun.svg'),
+		wac-time-place-text-color: $color-body-text-light,
+		theme-switcher-border-color: $color-accent,
+		socials-fb-icon: url('../../svg/facebook-light-mode.svg'),
+		socials-ig-icon: url('../../svg/instagram-light-mode.svg'),
+		socials-li-icon: url('../../svg/linkedin-light-mode.svg'),
+		socials-fb-icon-hover: url('../../svg/facebook-light-mode-hover.svg'),
+		socials-ig-icon-hover: url('../../svg/instagram-light-mode-hover.svg'),
+		socials-li-icon-hover: url('../../svg/linkedin-light-mode-hover.svg'),
+		header-bg-scrolled: $color-header-bg-scrolled-light,
+	),
+	theme--dark: (
+		body-bg: $color-background-dark,
+		secondary-body-bg: $color-secondary-background-dark-blue-dark-mode,
+		secondary-body-bg-dark: $color-secondary-background-dark-blue-dark-mode,
+		title-color: $color-white,
+		body-text-color: $color-body-text-dark,
+		secondary-body-text-color: $color-title-text-light-blue,
+		border-color: $color-border-dark,
+		secondary-border-color: $color-secondary-border-dark,
+		logo: url('../../svg/logo-dark.svg'),
+		hamburger: url('../../svg/hamburger.svg'),
+		hamburger-close: url('../../svg/hamburger-close-dark.svg'),
+		progress-bg: $color-progress-bg-dark,
+		small-headline: $color-body-text-dark,
+		header-btn-color: $color-white,
+		modal-label-color: $color-white,
+		modal-input-placeholder-color: $color-title-text-light-blue,
+		hero-overlay-color: #212832,
+		position-detail-info-text-color: $color-white,
+		position-detail-info-bg-color:
+			$color-secondary-background-dark-blue-dark-mode,
+		theme-switcher-bg: $color-accent,
+		theme-switcher-icon: url('../../svg/icon-moon.svg'),
+		theme-switcher-icon-homepage: url('../../svg/icon-moon.svg'),
+		wac-time-place-text-color: $color-white,
+		theme-switcher-border-color: $color-white,
+		socials-fb-icon: url('../../svg/facebook-wire.svg'),
+		socials-ig-icon: url('../../svg/instagram-wire.svg'),
+		socials-li-icon: url('../../svg/linkedin-wire.svg'),
+		socials-fb-icon-hover: url('../../svg/facebook-wire-hover.svg'),
+		socials-ig-icon-hover: url('../../svg/instagram-wire-hover.svg'),
+		socials-li-icon-hover: url('../../svg/linkedin-wire-hover.svg'),
+		header-bg-scrolled: $color-header-bg-scrolled-dark,
+	),
+);
+
+// From Sass 2.0 on, it is no longer allowed to declare globals on the fly.
+$theme-map: null;
+
+@mixin theme() {
+	@each $theme, $map in $themes {
+		// $theme: darkTheme, lightTheme
+		// $map: ('text-color': ..., 'bg-color': ...)
+
+		// make the $map globally accessible, so that theme-get() can access it
+		$theme-map: $map !global;
+
+		// make a class for each theme using interpolation -> #{}
+		// use & for making the theme class ancestor of the class
+		// from which you use @include theme() {...}
+		.#{$theme} & {
+			@content; // the content inside @include theme() {...}
+		}
+	}
+	// no use of the variable $theme-map now
+	$theme-map: null !global;
+}
+
+@function t($key) {
+	@return map-get($theme-map, $key);
+}

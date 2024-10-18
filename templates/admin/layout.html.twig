@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="cs">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="noindex, nofollow">
+		<title>
+			Administrace -
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('admin') }}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		{% endblock %}
+
+		{# Favicon #}
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset("assets/favicon/apple-touch-icon.png") }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset("assets/favicon/favicon-32x32.png") }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset("assets/favicon/favicon-16x16.png") }}">
+		<link rel="manifest" href="{{ asset("assets/favicon/site.webmanifest") }}" crossorigin="use-credentials" />
+
+	</head>
+	<body>
+		<main class="main">
+			<div class="container-fluid" data-layout="container">
+				<nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
+					<div class="d-flex align-items-center">
+						<div class="toggle-icon-wrapper">
+							<button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Toggle Navigation" aria-label="Toggle Navigation">
+								<span class="navbar-toggle-icon">
+									<span class="toggle-line"></span>
+								</span>
+							</button>
+						</div>
+						<a class="navbar-brand" href="">
+							<div class="d-flex align-items-center py-3"><img src="{{ asset("assets/svg/logo.svg") }}" alt=""></div>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+						<div class="navbar-vertical-content scrollbar">
+							<ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+								<li
+									class="nav-item">
+									<!-- label-->
+									<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+										<div class="col-auto navbar-vertical-label"></div>
+										<div class="col ps-0">
+											<hr class="mb-0 navbar-vertical-divider">
+										</div>
+									</div>
+									{% if is_granted('ROLE_ADMIN') %}
+										<a class="nav-link {% if app.request.get('_route') in ['admin_user', 'admin_user_edit', 'admin_user_new'] %}active{% endif %}" href="" role="button" data-bs-toggle="" aria-expanded="false">
+											<div class="d-flex align-items-center">
+												<span class="nav-link-icon">
+													<i class="fas fa-user"></i>
+												</span>
+												<span class="nav-link-text ps-1">Uživatelé</span>
+											</div>
+										</a>
+									{% endif %}
+									<a class="nav-link {% if app.request.get('_route') in ['admin_position', 'admin_position_new', 'admin_position_edit', 'admin_position_versions', 'admin_position_version_edit'] %}active{% endif %}" href="" role="button" data-bs-toggle="" aria-expanded="false">
+										<div class="d-flex align-items-center">
+											<span class="nav-link-icon">
+												<i class="fa-solid fa-address-card"></i>
+											</span>
+											<span class="nav-link-text ps-1">Pozice</span>
+										</div>
+									</a>
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_article', 'admin_article_new', 'admin_article_edit', 'admin_article_versions', 'admin_article_version_edit'] %}active{% endif %}" href="{{ path("admin_article") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-newspaper"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">Články</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_presentation', 'admin_presentation_new', 'admin_presentation_edit', 'admin_presentation_versions', 'admin_presentation_version_edit'] %}active{% endif %}" href="{{ path("admin_presentation") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-chalkboard-user"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">Přednášky</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_wac_edit', 'admin_wac_versions', 'admin_wac_version_edit'] %}active{% endif %}" href="{{ path("admin_wac_edit") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-people-group"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">WAC</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_about_edit', 'admin_about_versions', 'admin_about_version_edit'] %}active{% endif %}" href="{{ path("admin_about_edit") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-briefcase"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">O nás</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_contact_window', 'admin_contact_window_set_options'] %}active{% endif %}" href="{{ path("admin_contact_window") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-address-book"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">Kontaktní okno</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_page_setting', 'admin_page_setting_edit'] %}active{% endif %}" href="{{ path("admin_page_setting") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-keyboard"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">Nastavení textů</span>#}
+{#										</div>#}
+{#									</a>#}
+{#									<a class="nav-link {% if app.request.get('_route') in ['admin_shortcode', 'admin_shortcode_edit'] %}active{% endif %}" href="{{ path("admin_shortcode") }}" role="button" data-bs-toggle="" aria-expanded="false">#}
+{#										<div class="d-flex align-items-center">#}
+{#											<span class="nav-link-icon">#}
+{#												<i class="fa-solid fa-file-code"></i>#}
+{#											</span>#}
+{#											<span class="nav-link-text ps-1">Shortcode</span>#}
+{#										</div>#}
+{#									</a>#}
+								</li>
+								<li
+									class="nav-item">
+									<!-- label-->
+									<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+										<div class="col ps-0">
+											<hr class="mb-0 navbar-vertical-divider">
+										</div>
+									</div>
+									<a class="nav-link" href="{{ path('app_logout') }}" role="button" data-bs-toggle="" aria-expanded="false">
+										<div class="d-flex align-items-center">
+											<span class="nav-link-icon">
+												<span class="fas fa-sign-out-alt"></span>
+											</span>
+											<span class="nav-link-text ps-1">Odhlásit se</span>
+										</div>
+									</a>
+								</li>
+								{% if app.request.get('_route') in ['admin_about_edit', 'admin_about_version_edit', 'admin_article_new', 'admin_article_edit', 'admin_article_version_edit', 'admin_position_new', 'admin_position_edit', 'admin_position_version_edit', 'admin_presentation_new', 'admin_presentation_edit', 'admin_presentation_version_edit', 'admin_wac_edit', 'admin_wac_version_edit'] %}
+								<li class="nav-item">
+									<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+										<div class="col ps-0">
+											<hr class="mb-0 navbar-vertical-divider">
+										</div>
+									</div>
+									<button type="button" class="btn btn-warning me-2" id="btnSecondaryPreview">Náhled</button>
+									<button type="button" class="btn btn-success" id="btnSecondarySave">Uložit</button>
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="content">
+					<nav class="navbar navbar-light navbar-glass navbar-top navbar-expand">
+						<button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+							<span class="navbar-toggle-icon">
+								<span class="toggle-line"></span>
+							</span>
+						</button>
+						<a class="navbar-brand me-1 me-sm-3" href="">
+							<div class="d-flex align-items-center"><img class="me-2 w-100" src="{{ asset("assets/svg/logo.svg") }}" alt="" width="40"></div>
+						</a>
+					</nav>
+					{% for message in app.flashes('notice') %}
+						<div class="alert alert-success" role="alert">
+							{{ message }}
+						</div>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-warning" role="alert">
+							{{ message }}
+						</div>
+					{% endfor %}
+					{% block content %}{% endblock %}
+				</div>
+			</div>
+		</main>
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('admin') }}
+		{% endblock %}
+	</body>
+</html>

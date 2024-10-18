@@ -1,0 +1,84 @@
+.btn {
+	padding: 16px;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: 0.2s ease;
+}
+
+.btn-fill {
+	color: $color-white;
+	background-color: $color-accent;
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $color-accent-darker;
+	}
+}
+
+.btn-border {
+	color: $color-accent;
+	border: 1px solid $color-accent;
+	background-color: transparent;
+	&:hover, &:focus, &:active{
+		background-color: $color-accent;
+		color: $color-white;
+	}
+}
+
+.btn-envelope {
+	font-weight: $font-weight-title-text;
+	width: 230px;
+	padding: 20px 24px;
+}
+
+.btn-envelope:before {
+	@include buttonBefore();
+	background-image: url(../../svg/mail-icon.svg);
+	width: 20px;
+	height: 13px;
+}
+
+.btn-arrow-right {
+	&:after {
+		@include buttonAfter();
+		background-image: url(../../svg/arrow-right-accent.svg);
+		width: 11px;
+		height: 8px;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		&:after {
+			background-image: url(../../svg/arrow-right-white.svg);
+		}
+	}
+}
+
+.btn-arrow-right-white {
+	&:after {
+		@include buttonAfter();
+		background-image: url(../../svg/arrow-right-white.svg);
+		width: 11px;
+		height: 8px;
+		transform: rotate(90deg);
+	}
+}
+
+.btn-arrow-right-white *[modal-opener],
+*[wac-sign-in] {
+	cursor: pointer;
+}
+
+a[disabled],
+button[disabled] {
+	background-color: #abb7c0;
+	color: $color-white;
+	font-weight: $font-weight-title-text;
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: #8b969e;
+	}
+}

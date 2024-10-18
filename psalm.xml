@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<psalm
+        errorLevel="2"
+        resolveFromConfigFile="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        reportMixedIssues="true"
+        useDocblockTypes="true"
+        findUnusedPsalmSuppress="true"
+        findUnusedVariablesAndParams="true"
+        findUnusedBaselineEntry="true"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+            <directory name="var/"/>
+            <file name="src/DataFixtures/AppFixtures.php"/>
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <MissingFile>
+            <errorLevel type="suppress">
+                <file name="config/preload.php" />
+                <file name="tests/bootstrap.php" />
+            </errorLevel>
+        </MissingFile>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Entity"/>
+                <directory name="src/Repository"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <MethodSignatureMismatch>
+            <errorLevel type="suppress">
+                <directory name="vendor"/>
+            </errorLevel>
+        </MethodSignatureMismatch>
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+        <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
+    </plugins>
+</psalm>

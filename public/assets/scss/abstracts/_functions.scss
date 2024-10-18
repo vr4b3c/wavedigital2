@@ -1,0 +1,6 @@
+//USAGE
+// width: calculate-width(columns, margin)
+
+@function  calculate-width ($col-span, $margin){
+  @return 100% / $col-span - ($margin / 2)
+}

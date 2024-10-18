@@ -1,0 +1,60 @@
+//usage
+//@include %MIXIN
+
+$breakpoints: (
+        "s": 427px,
+        "m": 767px,
+        "l": 1439px,
+) !default;
+
+@mixin resp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin rounded-corner($arc) {
+  -moz-border-radius: $arc;
+  -webkit-border-radius: $arc;
+  border-radius: $arc;
+}
+
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin pseudo-bg($width: 24, $height: 24, $bg-image){
+  width: $width+px;
+  height: $height+px;
+  background-image: url($bg-image);
+}
+
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+@mixin buttonAfter(){
+  @include pseudo($pos: relative);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 16px; //just to make sure the text doesn't ever touch the after element
+}
+
+
+@mixin buttonBefore(){
+  @include pseudo($pos: relative);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 16px; //just to make sure the text doesn't ever touch the after element
+}

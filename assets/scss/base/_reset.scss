@@ -1,0 +1,145 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'DM Sans', sans-serif;
+	line-height: 1.2;
+	//transition: 0.2s ease;
+	@include theme() {
+		//color: t('body-text-color');
+	}
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	margin: 0;
+	position: relative;
+	overflow-y: visible;
+	-webkit-overflow-scrolling: touch;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+	image-rendering: optimizeSpeed;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeSpeed;
+	@include theme() {
+		background-color: t('body-bg');
+	}
+}
+
+main:not(.homepage) {
+	padding-top: 105px;
+}
+
+img {
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	transition: 200ms ease;
+	color: $color-accent;
+}
+
+section {
+	width: 100%;
+	position: relative;
+	padding-top: 120px;
+	@include resp('l') {
+		padding-top: 80px;
+	}
+	@include resp('m') {
+		padding-top: 40px;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1440px;
+	width: 100%;
+	padding: 0 80px;
+	display: flex;
+	position: relative;
+
+	@include resp('l') {
+		padding: 0 40px;
+	}
+	@include resp('m') {
+		padding: 0 24px;
+	}
+	@include resp('s') {
+		padding: 0 16px;
+	}
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+}
+
+.grid {
+	display: grid;
+}
+
+.svgs {
+	display: none;
+}
+
+svg {
+	height: 100%;
+	width: 100%;
+	transition: 200ms ease;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+
+.errorPageBanner{
+	position: absolute;
+	top: -93px;
+	left: 0;
+	width: 100%;
+	background-color: $color-secondary-background-dark-blue;
+	z-index: 9;
+	padding: 32px 0;
+	transition: top 0.5s ease-in-out;
+	&.active{
+		top: 0;
+	}
+	@include resp('m'){
+		padding: 16px 0;
+	}
+	span{
+		@include fontSize(24px);
+		text-align: center;
+		color: $color-white;
+		margin: 0 auto;
+	}
+}
+
+.grecaptcha-badge {
+	visibility: hidden;
+}

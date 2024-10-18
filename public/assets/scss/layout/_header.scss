@@ -1,0 +1,48 @@
+body.menu-open{
+  overflow: hidden;
+  .mobile-menu{
+  }
+  header{
+    .container .hamburger-wrapper{
+      //background-image: url(../svgs/hamburger-close.svg);
+    }
+  }
+}
+
+.mobile-menu{
+  display: none;
+  opacity: 0;
+  transition: 200ms ease;
+  position: absolute;
+  padding: 88px 0 24px 0;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  z-index: 3;
+  //@include bg("../img/hero-bg.jpg", cover, center);
+  .col{
+    text-align: center;
+    align-items: center;
+    z-index: 1;
+    a{
+      margin-bottom: 64px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.hamburger-wrapper{
+  display: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  //@include bg("../svgs/hamburger.svg", contain, center);
+  background-repeat: no-repeat;
+  @include resp("l"){
+    display: block;
+  }
+}

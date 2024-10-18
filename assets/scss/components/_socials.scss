@@ -1,0 +1,72 @@
+.socials{
+  margin-right: 40px;
+  a{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    &.instagram{
+       @include theme(){
+          background-image: t(socials-ig-icon);
+        }
+        &:hover{
+          @include theme(){
+            background-image: t(socials-ig-icon-hover);
+          }
+        }
+      }
+      &.facebook{
+        @include theme(){
+          background-image: t(socials-fb-icon);
+        }
+        &:hover{
+          @include theme(){
+            background-image: t(socials-fb-icon-hover);
+          }
+        }
+      }
+      &.linkedin{
+        @include theme(){
+          background-image: t(socials-li-icon);
+        }
+        &:hover{
+          @include theme(){
+            background-image: t(socials-li-icon-hover);
+          }
+        }
+      }
+    &:last-child{
+      margin-right: 0;
+    }
+    svg{
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+
+footer .credentials .socials a, header.homepage .socials a{
+  &.instagram{
+        background-image: url(../../svg/instagram-wire.svg);
+        &:hover{
+        background-image: url(../../svg/instagram-wire-hover.svg);
+        }
+      }
+      &.facebook{
+        background-image: url(../../svg/facebook-wire.svg);
+        &:hover{
+        background-image: url(../../svg/facebook-wire-hover.svg);
+        }
+      }
+      &.linkedin{
+        background-image: url(../../svg/linkedin-wire.svg);
+        &:hover{
+         background-image: url(../../svg/linkedin-wire-hover.svg);
+        }
+      }
+}
